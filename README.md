@@ -8,6 +8,10 @@
 
 3. Fixing Boiler plate(Remove not needed files)
 
+4. Adding folders for each element
+
 ## Creating FE
 
-4. Instaling Authentication form
+1. Instaling Authentication form
+
+2. Instaling some UI elements(to be added more)
