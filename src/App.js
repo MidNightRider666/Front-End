@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-import AuthContext from './components/store/AuthContx';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import AuthContext from './store/AuthContx';
 
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -21,9 +23,11 @@ function App() {
     <AuthContext.Provider value={ctxValue}>
     <div className="App">
     <Route path={"/Login"}>
+            <Login />
           </Route>
           <Route path={"/Register"}>
-      </Route>
+            <Register />
+          </Route>
     </div>
     </AuthContext.Provider>
   );
