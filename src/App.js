@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import AuthContext from './components/store/AuthContx';
 
@@ -19,7 +20,10 @@ function App() {
   return (
     <AuthContext.Provider value={ctxValue}>
     <div className="App">
-      Apps
+    <Route path={"/Login"}>
+          </Route>
+          <Route path={"/Register"}>
+      </Route>
     </div>
     </AuthContext.Provider>
   );

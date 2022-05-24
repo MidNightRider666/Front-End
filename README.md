@@ -15,3 +15,7 @@
 1. Instaling Authentication form
 
 2. Instaling some UI elements(to be added more)
+
+3. Added post and get elements(might change later on)
+
+4. Creating Register form
