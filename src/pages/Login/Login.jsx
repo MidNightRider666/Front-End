@@ -7,13 +7,12 @@ import AuthContext from "../../store/AuthContx";
 import css from "./Login.module.scss";
 
 const initErrors = {
-  password: "",
-  email: "",
+  Password: "",
+  Email: "",
 };
 
 function Login() { 
   const authCtx = useContext(AuthContext);
-  const history = useHistory();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [isError, setisError] = useState(false);
@@ -38,15 +37,14 @@ function Login() {
       }));
     }
     const newLoginUser = {
-      email: userEmail,
-      password: userPassword,
+      Email: userEmail,
+      Password: userPassword,
     };
     const sendResult = await postFecth("auth/login", newLoginUser);
     if (sendResult.err) {
       setisError(true);
       setNoAccount(sendResult.err);
     } else {
-      history.push("/");
       authCtx.login();
     }
   }

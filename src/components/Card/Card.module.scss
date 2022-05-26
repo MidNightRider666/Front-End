@@ -1,0 +1,21 @@
+.card {
+  border: 1px solid lightseagreen;
+  padding: 20px;
+  text-align: center;
+  text-transform: capitalize;
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .body p:first-child {
+    margin-bottom: 0;
+  }
+}
+
+.card:hover {
+  box-shadow: 4px 8px 4px 4px lightgreen;
+  color: salmon;
+  border: 1px solid lightblue;
+  background-color: aliceblue;
+}

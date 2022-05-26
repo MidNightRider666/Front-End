@@ -56,7 +56,6 @@ function Register() {
     };
     const sendResult = await postFecth("auth/register", newUserRegister);
     if (sendResult.changes === 1) {
-      history.push("/Login");
     }
     if (sendResult.err) {
       setisError(true);
