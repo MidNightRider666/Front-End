@@ -7,10 +7,10 @@ function CardList(props) {
     <Grid>
       {props.item.map((sObj) => (
         <Card
-          key={sObj.Id}
-          title={sObj.Title}
-          category={sObj.Category}
-          description={sObj.Description}
+          key={props.cardType === 'bills' ? sObj.id : sObj.Id}
+          title={props.cardType === 'bills' ? sObj.Status : sObj.Title}
+          category={props.cardType === 'bills' ? sObj.Expenses : sObj.Category}
+          description={props.cardType === 'registers' ? sObj.Description: sObj.register}
           {...sObj}
         />
       ))}

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import Button from "../../components/UI/Button/Button";
 import Container from "../../components/UI/Container";
 import { postFecth } from "../../helper/postFecth";
@@ -7,8 +6,8 @@ import AuthContext from "../../store/AuthContx";
 import css from "./Login.module.scss";
 
 const initErrors = {
-  Password: "",
   Email: "",
+  Password: "",
 };
 
 function Login() { 
@@ -41,9 +40,15 @@ function Login() {
       Password: userPassword,
     };
     const sendResult = await postFecth("auth/login", newLoginUser);
-    if (sendResult.err) {
+    console.log('sendResult===', sendResult);
+    if (sendResult.success === false) {
       setisError(true);
-      setNoAccount(sendResult.err);
+      const ErrorfromBe = sendResult.error
+      const ErrorfromBe1 = sendResult.error
+      const DisplayError = ErrorfromBe.map((error) => {return <p>{error.message}</p>})
+      console.log('DisplayError===', DisplayError);
+      console.log('ErrorfromBe===', ErrorfromBe);
+      setNoAccount(DisplayError || ErrorfromBe1);
     } else {
       authCtx.login();
     }

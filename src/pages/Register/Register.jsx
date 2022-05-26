@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Button from "../../components/UI/Button/Button";
 import Container from "../../components/UI/Container";
 import { postFecth } from "../../helper/postFecth";
 import css from "./Register.module.scss";
 
 const initErrors = {
-  password: "",
+  Password: "",
   confirmPasword: "",
-  email: "",
+  Email: "",
 };
 
 function Register() {
-  const history = useHistory();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
   const [isError, setisError] = useState(false);
   const [errorObj, seterrorObj] = useState(initErrors);
+  const [handleErrors, setHandleErrors] = useState("");
 
   useEffect(() => {
     const isErrorsEmpty = Object.values(errorObj).every((el) => el === "");
@@ -50,15 +49,21 @@ function Register() {
         }));
       }
     const newUserRegister = {
-      email: userEmail,
-      confirmPasword: confirmationPassword,
-      password: userPassword,
+      Email: userEmail,
+      Password: userPassword,
+      confirmPassword: confirmationPassword,
     };
     const sendResult = await postFecth("auth/register", newUserRegister);
+    console.log('sendResult===', sendResult);
     if (sendResult.changes === 1) {
     }
-    if (sendResult.err) {
-      setisError(true);
+    if (sendResult.success === false) {
+      const ErrorfromBe = sendResult.error
+      const ErrorfromBe1 = sendResult.error
+      const DisplayError = ErrorfromBe.map((error) => {return <p>{error.message}</p>})
+      console.log('DisplayError===', DisplayError);
+      console.log('ErrorfromBe===', ErrorfromBe);
+      setHandleErrors(DisplayError || ErrorfromBe1);
     }
   }
 
@@ -91,6 +96,7 @@ function Register() {
           placeholder="Confirm Password"
         />
         {errorObj.confirmationPassword && <p>{errorObj.confirmationPassword}</p>}
+        <h3>{handleErrors}</h3>
         <Button>Register</Button>
       </form>
     </Container>

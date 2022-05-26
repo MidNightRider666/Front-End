@@ -13,6 +13,7 @@ function Home() {
     getSkills();
   }, []);
 
+
   async function getSkills() {
     const skillFromDB = await getFetch("accounts/8");
     setSkillArr(skillFromDB.data);
@@ -27,7 +28,7 @@ function Home() {
             <Button Add>Add skills</Button>
           </Link>
         </div>
-        <CardList item={skillArr} />
+        <CardList cardType='registers' item={skillArr} />
       </Container>
     );
   }

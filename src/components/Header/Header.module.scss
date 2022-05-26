@@ -1,0 +1,44 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: normal;
+  margin: 0;
+}
+.HeaderLogo {
+  width: 100px;
+  height: auto;
+  opacity: inherit;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navLink {
+  display: inline-block;
+  color: white;
+  background-color: lightgreen;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  transition: 1s;
+}
+.navLink:hover {
+  background-color: white;
+  border: 1px solid lightgreen;
+  color: lightgreen;
+  transition: 1s;
+}
