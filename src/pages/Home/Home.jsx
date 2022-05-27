@@ -29,6 +29,11 @@ function Home() {
           </Link>
         </div>
         <CardList cardType='registers' item={skillArr} />
+        <div className={css.flex}>
+        <Link to={"/Archived"}>
+        <Button> View Archived</Button>
+      </Link>
+        </div>
       </Container>
     );
   }
