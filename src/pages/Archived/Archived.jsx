@@ -30,7 +30,7 @@ return (
         <Button Add>Add skills</Button>
       </Link>
     </div>
-    <CardList cardType='Archived' item={skillArr} />
+    <CardList onArchive={getSkills} cardType='Archived' item={skillArr} />
     <div className={css.flex}>
     <Link to={"/Archived"}>
           <Button> View Archived</Button>

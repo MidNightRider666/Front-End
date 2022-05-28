@@ -3,6 +3,7 @@ import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
+import AddBills from './pages/Add/AddBills';
 import Archived from './pages/Archived/Archived';
 import Bills from './pages/Bills/Bills';
 import Home from './pages/Home/Home';
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path={"/bills/:registerid"} >
             <Bills />
+          </Route>
+          <Route path={"/AddBills/:registerid"} >
+            <AddBills />
           </Route>
           <Route path={"/Archived"}>
             <Archived />

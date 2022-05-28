@@ -12,7 +12,7 @@ export async function postFecth(resource, dataToPost) {
     const usersFromApi = await resp.json();
     if (resource === "auth/login") {
       if (usersFromApi) {
-        localStorage.setItem("token", usersFromApi.token);
+        localStorage.setItem("token", usersFromApi.data);
       }
     }
     return usersFromApi;

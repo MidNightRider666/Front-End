@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../../components/UI/Button/Button";
 import Container from "../../components/UI/Container";
 import { postFecth } from "../../helper/postFecth";
@@ -11,6 +12,7 @@ const initErrors = {
 };
 
 function Login() { 
+  const history = useHistory();
   const authCtx = useContext(AuthContext);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -23,18 +25,6 @@ function Login() {
     seterrorObj(initErrors);
     e.preventDefault();
 
-    if (userEmail.trim() === "") {
-      seterrorObj((prevState) => ({
-        ...prevState,
-        userEmail: "Email can't be blank",
-      }));
-    }
-    if (userPassword.trim() === "") {
-      seterrorObj((prevState) => ({
-        ...prevState,
-        userPassword: "Password can't be blank",
-      }));
-    }
     const newLoginUser = {
       Email: userEmail,
       Password: userPassword,
@@ -50,6 +40,7 @@ function Login() {
       console.log('ErrorfromBe===', ErrorfromBe);
       setNoAccount(DisplayError || ErrorfromBe1);
     } else {
+      history.push("/");
       authCtx.login();
     }
   }

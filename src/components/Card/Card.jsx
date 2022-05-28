@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { archiveFecth } from "../../helper/archiveFetch";
 import Button from "../UI/Button/Button";
 import css from "./Card.module.scss";
 
 function Card(props) {
+  const history = useHistory();
 
   const getCardtype = props.cardType
   console.log('getCardtype===', getCardtype);
@@ -15,8 +18,28 @@ function Card(props) {
       </Link>
     }
     if (getCardtype === 'bills') {
-      return;
+      async function handleDelele(){
+        const deleteResult = await archiveFecth('bills/' + props.id)
+        console.log('deleteResult===', deleteResult);
+        if(deleteResult.changes === 1) {
+          console.log('succes delete');
+          props.onDelete();
+          history.go(0)
+        }
+      }
+      return <Button onClick={handleDelele}>Delete</Button>
     }
+    if(getCardtype=== 'Archived') {
+      async function handleArchive() {
+        const removeArchive = await archiveFecth('accounts/removearchive/' + props.Id)
+        console.log('removeArchive===', removeArchive);
+        if(removeArchive.changes ===1) {
+          console.log('succes delete');
+          props.onDelete();
+        }
+        }
+        return <Button onClick={handleArchive}>RemoveArchive</Button>
+      }
   }
 
   return (
