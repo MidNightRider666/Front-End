@@ -51,7 +51,7 @@ function Add() {
     };
     const sendResult = await postFecth("bills/post", newSkills);
     console.log('sendResult===', sendResult);
-    if (sendResult.err) {
+    if (sendResult.error) {
       setisError(true);
     } else {
       history.push(`/bills/${registerid}`);
@@ -60,27 +60,27 @@ function Add() {
 
   return (
     <Container>
-      <h2>Add Skills</h2>
+      <h2>Add Bills</h2>
       <form onSubmit={submitHandler} className={css.form}>
         {isError && <h3 className={css.err}>Check The Form</h3>}
         <input
           onChange={(e) => setbillsStatus(e.target.value)}
           value={billsStatus}
-          className={`${css.input} ${errorObj.skillsTitle ? css.errBg : ""}`}
+          className={`${css.input} ${errorObj.billsStatus ? css.errBg : ""}`}
           type="text"
           placeholder="Title"
         />
-        {errorObj.skillsTitle && <p>{errorObj.skillsTitle}</p>}
+        {errorObj.billsStatus && <p>{errorObj.billsStatus}</p>}
         <input
           onChange={(e) => setBillExpenses(e.target.value)}
           value={billExpenses}
           className={`${css.input} ${
-            errorObj.skillsDescription ? css.errBg : ""
+            errorObj.billExpenses ? css.errBg : ""
           }`}
           type="number"
           placeholder="Expenses"
         />
-        {errorObj.skillsDescription && <p>{errorObj.skillsDescription}</p>}
+        {errorObj.billExpenses && <p>{errorObj.billExpenses}</p>}
         <Button Add>Add</Button>
       </form>
     </Container>

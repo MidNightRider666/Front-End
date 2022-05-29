@@ -21,8 +21,7 @@ function Card(props) {
       async function handleDelele(){
         const deleteResult = await archiveFecth('bills/' + props.id)
         console.log('deleteResult===', deleteResult);
-        if(deleteResult.changes === 1) {
-          console.log('succes delete');
+        if(deleteResult.data.affectedRows === 1) {
           props.onDelete();
           history.go(0)
         }
@@ -33,9 +32,9 @@ function Card(props) {
       async function handleArchive() {
         const removeArchive = await archiveFecth('accounts/removearchive/' + props.Id)
         console.log('removeArchive===', removeArchive);
-        if(removeArchive.changes ===1) {
+        if(removeArchive.data.affectedRows===1) {
           console.log('succes delete');
-          props.onDelete();
+          props.onArchive();
         }
         }
         return <Button onClick={handleArchive}>RemoveArchive</Button>

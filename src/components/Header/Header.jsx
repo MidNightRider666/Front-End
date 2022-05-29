@@ -8,8 +8,6 @@ import css from "./Header.module.scss";
 function Header() {
   const { isUserLoggedIn, logout } = useContext(AuthContext);
 
-
-
   function logoutHandler(e) {
     logout();
     localStorage.removeItem("token");

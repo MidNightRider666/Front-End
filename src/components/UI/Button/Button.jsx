@@ -3,7 +3,7 @@ import React from "react";
 function Button(props) {
 
   return (
-    <button onClick={props.onClick}>
+    <button disabled={props.dissable} onClick={props.onClick}>
       {props.children}
     </button>
   );

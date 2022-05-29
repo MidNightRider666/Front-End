@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import AddBills from './pages/Add/AddBills';
+import Addregisters from './pages/Add/Addregisters';
 import Archived from './pages/Archived/Archived';
 import Bills from './pages/Bills/Bills';
 import Home from './pages/Home/Home';
@@ -16,6 +17,7 @@ function App() {
   function login() {
     setIsUserLoggedIn(true);
   }
+
   function logout() {
     setIsUserLoggedIn(false);
   }
@@ -25,6 +27,7 @@ function App() {
     login,
     logout,
   };
+  console.log('isUserLoggedIn===', isUserLoggedIn);
   return (
     <AuthContext.Provider value={ctxValue}>
     <div className="App">
@@ -38,6 +41,9 @@ function App() {
           </Route>
           <Route path={"/AddBills/:registerid"} >
             <AddBills />
+          </Route>
+          <Route path={"/AddRegisters"} >
+            <Addregisters />
           </Route>
           <Route path={"/Archived"}>
             <Archived />
