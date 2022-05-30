@@ -47,29 +47,36 @@ function Login() {
 
   return (
     <Container>
-      <h2>Login</h2>
-      <form onSubmit={submitHandler} className={css.form}>
+      <form action={css.all} id={css.main} onSubmit={submitHandler} className={css.form}>
+      <h2 className={css.h2}>Login</h2>
         {isError && <h3 className={css.err}>Check The Form</h3>}
+        <div className={css.inputparent}>
         <input
           onChange={(e) => setUserEmail(e.target.value)}
           value={userEmail}
-          className={`${css.input} ${errorObj.userEmail ? css.errBg : ""}`}
+          className={css.input}
+          // className={`${css.input} ${errorObj.userEmail ? css.errBg : ""}`}
           type="email"
           placeholder="email"
+          id="Email"
         />
         {errorObj.userEmail && (
           <p className={css.errorText}>{errorObj.userEmail}</p>
         )}
+        </div>
+        <div className={css.inputparent}>
         <input
           onChange={(e) => setUserPassword(e.target.value)}
           value={userPassword}
-          className={`${css.input} ${errorObj.userPassword ? css.errBg : ""}`}
+          className={css.input}
           type="password"
           placeholder="password"
+          id="password"
         />
         {errorObj.userPassword && (
           <p className={css.errorText}>{errorObj.userPassword}</p>
         )}
+        </div>
         <h3>{noAccount}</h3>
         <Button>Login</Button>
       </form>

@@ -25,7 +25,16 @@
   color: white;
   transition: 1s;
 }
+
 .button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: baseline
 }
+
+@media only screen and (max-width: 60rem) {
+  
+}
+
+
+
