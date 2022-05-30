@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Button from "../../components/UI/Button/Button";
 import Container from "../../components/UI/Container";
 import { postFecth } from "../../helper/postFecth";
@@ -11,6 +12,7 @@ const initErrors = {
 };
 
 function Register() {
+  const history = useHistory()
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
@@ -56,6 +58,7 @@ function Register() {
     const sendResult = await postFecth("auth/register", newUserRegister);
     console.log('sendResult===', sendResult);
     if (sendResult.changes === 1) {
+      history.push('/login')
     }
     if (sendResult.success === false) {
       const ErrorfromBe = sendResult.error
