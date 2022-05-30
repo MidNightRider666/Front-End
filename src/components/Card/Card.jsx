@@ -6,7 +6,6 @@ import Button from "../UI/Button/Button";
 import css from "./Card.module.scss";
 
 function Card(props) {
-  const history = useHistory();
 
   const getCardtype = props.cardType
   console.log('getCardtype===', getCardtype);
@@ -19,11 +18,10 @@ function Card(props) {
     }
     if (getCardtype === 'bills') {
       async function handleDelele(){
-        const deleteResult = await archiveFecth('bills/' + props.id)
+        const deleteResult = await archiveFecth('bills/remove' + props.id)
         console.log('deleteResult===', deleteResult);
         if(deleteResult.data.affectedRows === 1) {
           props.onDelete();
-          history.go(0)
         }
       }
       return <Button onClick={handleDelele}>Delete</Button>
