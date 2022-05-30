@@ -10,10 +10,14 @@ function CardList(props) {
           onDelete={props.onDelete}
           cardType={props.cardType}
           onArchive={props.onArchive}
-          key={props.cardType === 'bills' ? sObj.id : sObj.Id}
-          title={props.cardType === 'bills' ? sObj.Status : sObj.Title}
-          category={props.cardType === 'bills' ? `$${sObj.Expenses}` : sObj.Category}
-          description={props.cardType === 'registers' || 'Archived' ? sObj.Description : ''}
+          key={props.cardType === "bills" ? sObj.id : sObj.Id}
+          title={props.cardType === "bills" ? sObj.Status : sObj.Title}
+          category={
+            props.cardType === "bills" ? `$${sObj.Expenses}` : sObj.Category
+          }
+          description={
+            props.cardType === "registers" || "Archived" ? sObj.Description : ""
+          }
           {...sObj}
         />
       ))}

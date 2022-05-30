@@ -14,29 +14,28 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [expiredToken, setExpiredToken] = useState([]);
 
-
   useEffect(() => {
     getSkills();
   }, []);
 
-
-
   async function getSkills() {
-    setIsLoading(true)
+    setIsLoading(true);
     const skillFromDB = await getFetch("accounts/8");
-    console.log('skillFromDB===', skillFromDB);
     setSkillArr(skillFromDB.data);
-    setExpiredToken(skillFromDB)
-    setIsLoading(false)
+    setExpiredToken(skillFromDB);
+    setIsLoading(false);
   }
-  console.log('expiredToken===', expiredToken.error);
 
-  if(expiredToken.error === 'invalid token') {
-    alert('Your login time has expired')
-    localStorage.removeItem('token')
-    history.push('/')
+  if (expiredToken.error === "invalid token") {
+    alert("Your login time has expired");
+    localStorage.removeItem("token");
+    history.push("/");
   }
-  
+
+  if (localStorage.getItem("token") === null) {
+    alert("you are not allowed to be here");
+    history.push("/");
+  }
 
   if (skillArr.length <= 0 && !isLoading) {
     return (
@@ -55,21 +54,21 @@ function Home() {
         <Loading />
       </div>
     );
-  }
-    else {
+    
+  } else {
     return (
       <Container>
         <div className={css.flex}>
           <h1>Registers List</h1>
           <Link to={"/AddRegisters"}>
-            <Button Add>Add Registers</Button>
+            <Button Adds>Add Registers</Button>
           </Link>
         </div>
-        <CardList cardType='registers' item={skillArr} />
+        <CardList cardType="registers" item={skillArr} />
         <div className={css.flex}>
-        <Link to={"/Archived"}>
-        <Button> View Archived</Button>
-      </Link>
+          <Link to={"/Archived"}>
+            <Button Archived> View Archived</Button>
+          </Link>
         </div>
       </Container>
     );

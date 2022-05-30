@@ -6,10 +6,7 @@ import { postFecth } from "../../helper/postFecth";
 import AuthContext from "../../store/AuthContx";
 import css from "./Login.module.scss";
 
-const initErrors = {
-  Email: "",
-  Password: "",
-};
+
 
 function Login() { 
   const history = useHistory();
@@ -17,33 +14,32 @@ function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [isError, setisError] = useState(false);
-  const [errorObj, seterrorObj] = useState(initErrors);
   const [noAccount, setNoAccount] = useState("");
 
   async function submitHandler(e) {
     setisError(false);
-    seterrorObj(initErrors);
     e.preventDefault();
-
     const newLoginUser = {
       Email: userEmail,
       Password: userPassword,
     };
     const sendResult = await postFecth("auth/login", newLoginUser);
-    console.log('sendResult===', sendResult);
-    if (sendResult.success === false) {
-      setisError(true);
+    if(sendResult.error === 'Login failed. Invalid Email and Password combination') {
       const ErrorfromBe = sendResult.error
-      const ErrorfromBe1 = sendResult.error
-      const DisplayError = ErrorfromBe.map((error) => {return <p>{error.message}</p>})
-      console.log('DisplayError===', DisplayError);
-      console.log('ErrorfromBe===', ErrorfromBe);
-      setNoAccount(DisplayError || ErrorfromBe1);
-    } else {
+      setNoAccount(ErrorfromBe);
+    }
+    if(sendResult.success === true) {
       history.push("/");
       authCtx.login();
     }
+    else {
+      setisError(true);
+      const ErrorfromBe = sendResult.error
+      const DisplayError = ErrorfromBe.map((error) => {return <p key={error.field}>{error.message}</p>})
+      setNoAccount(DisplayError);
+  } 
   }
+
 
   return (
     <Container>
@@ -60,9 +56,6 @@ function Login() {
           placeholder="email"
           id="Email"
         />
-        {errorObj.userEmail && (
-          <p className={css.errorText}>{errorObj.userEmail}</p>
-        )}
         </div>
         <div className={css.inputparent}>
         <input
@@ -73,12 +66,9 @@ function Login() {
           placeholder="password"
           id="password"
         />
-        {errorObj.userPassword && (
-          <p className={css.errorText}>{errorObj.userPassword}</p>
-        )}
         </div>
-        <h3>{noAccount}</h3>
-        <Button>Login</Button>
+        <Button RegLog>Login</Button>
+        <h3 className={css.error}>{noAccount}</h3>
       </form>
     </Container>
   );

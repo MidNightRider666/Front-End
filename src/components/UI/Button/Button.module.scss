@@ -39,3 +39,39 @@ button:disabled
   background-color: #600000 ;
   color: silver ;
 }
+
+.btn.RegLog:hover {
+  background-color: seagreen;
+  color: #600000;
+}
+
+.btn.Archived:hover{
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #282828;
+  color: crimson;
+}
+
+.btn.Add:hover {
+  border: 2px solid black;
+  background-color: seagreen;
+  color:floralwhite;
+}
+
+.btn.Adds:hover{
+  border: 2px solid black;
+  background-color: seagreen;
+  color: khaki;
+}
+
+.btn.Adds:hover:after {
+  content: " +";
+}
+
+.btn.Delete:hover{
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px 2px #202020;
+  background-color: crimson;
+  color: white;
+}
+
