@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+@media only screen and (max-width: 40rem) {
+  .grid {
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+
+@media only screen and (max-width: 10rem) {
+  .grid {
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 1fr ;
+  }
+}
