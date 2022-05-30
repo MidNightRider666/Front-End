@@ -1,9 +1,10 @@
 import React from "react";
+import css from "./Button.module.scss";
 
 function Button(props) {
-
+  const extraBtn = props.logout ? css.logout : props.AddFocus ? css.AddFocus : "";
   return (
-    <button disabled={props.dissable} onClick={props.onClick}>
+    <button disabled={props.dissable} onClick={props.onClick} className={`${css.btn} ${extraBtn}`}>
       {props.children}
     </button>
   );

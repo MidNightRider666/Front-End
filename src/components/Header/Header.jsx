@@ -14,14 +14,10 @@ function Header() {
   }
   return (
     <header>
+        <div className={css.title}>
+          <h1>Technical registration point </h1>
+        </div>
       <Container className={css.header}>
-        <h2 className={css.logo}>
-          <img
-            className={css.HeaderLogo}
-            src="https://thumbs.dreamstime.com/b/skill-logo-concept-design-eps-supported-83707473.jpg"
-            alt=""
-          />
-        </h2>
         <nav>
           {!isUserLoggedIn && (
             <NavLink className={css.navLink} to={"/Register"}>
@@ -38,14 +34,20 @@ function Header() {
               Home
             </NavLink>
           )}
-          {isUserLoggedIn && (
-            <Button onClick={logoutHandler} AddFocus>
-              Logout
-            </Button>
+            {isUserLoggedIn && (
+            <NavLink className={css.navLink} to={"registrations"}>
+              Registers
+            </NavLink>
           )}
         </nav>
       </Container>
-      <hr className="horizontal line" />
+      {isUserLoggedIn && (
+        <div className={css.button}>
+          <Button logout onClick={logoutHandler}>
+            Logout
+      </Button>
+      </div>
+        )}
     </header>
   );
 }

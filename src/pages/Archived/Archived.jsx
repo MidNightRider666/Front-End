@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import CardList from '../../components/CardList/CardList';
-import Button from '../../components/UI/Button/Button';
 import Container from '../../components/UI/Container';
 import Loading from '../../components/UI/Loading';
 import { getFetch } from '../../helper/getFect';
 import css from '../Archived/Archived.module.scss'
 
 function Archived() {
-
+  const history = useHistory();
   const [skillArr, setSkillArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [expiredToken, setExpiredToken] = useState([]);
 
   useEffect(() => {
     getSkills();
@@ -21,8 +21,14 @@ function Archived() {
     setIsLoading(true)
     const skillFromDB = await getFetch("accounts/archived/8");
     setSkillArr(skillFromDB.data);
+    setExpiredToken(skillFromDB)
     setIsLoading(false)
-    console.log('skillFromDB===', skillFromDB.data);
+  }
+
+  if(expiredToken.error === 'invalid token') {
+    alert('Your login time has expired')
+    localStorage.removeItem('token')
+    history.push('/')
   }
 
   if (skillArr.length <= 0 && !isLoading) {

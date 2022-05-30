@@ -16,6 +16,11 @@ function Bills() {
     const [storedBills, setStoredBills] = useState();
     const [storeArchives, setStoreArchives] = useState([])
     const [displayExpenses, setDisplayExpenses] = useState("")
+    const [expiredToken, setExpiredToken] = useState([]);
+
+
+
+
 
     useEffect(() => {
       getBills();
@@ -24,6 +29,7 @@ function Bills() {
         const skillFromDB = await getFetch(`bills/` + registerid);
         setBillsArc(skillFromDB.data);
         console.log('killFromDB.data===', skillFromDB.data);
+        setExpiredToken(skillFromDB)
         const Expneses = skillFromDB.data
         const billArray = Expneses.map((str) => {return Number(str.Expenses)})
         const sumbills = billArray.reduce((a, b) => a = a + b, 0)
@@ -33,6 +39,12 @@ function Bills() {
           setStoredBills(storedData)
           console.log('storedData===', storedData);
         }
+      }
+
+      if(expiredToken.error === 'invalid token') {
+        alert('Your login time has expired')
+        localStorage.removeItem('token')
+        history.push('/')
       }
 
       async function ArchiveRegisters() {
@@ -45,7 +57,11 @@ function Bills() {
       }
       }
 
-
+      
+  if(localStorage.getItem('token') === null ) {
+    alert('you are not allowed to be here')
+    history.push('/')
+}
 
       console.log('billsArc===', billsArc);
       return (

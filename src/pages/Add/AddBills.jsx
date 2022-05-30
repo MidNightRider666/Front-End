@@ -20,6 +20,8 @@ function Add() {
   const [billExpenses, setBillExpenses] = useState("");
   const [isError, setisError] = useState(false);
   const [errorObj, seterrorObj] = useState(initErrors);
+  const [expiredToken, setExpiredToken] = useState([]);
+
 
   useEffect(() => {
     const isErrorsEmpty = Object.values(errorObj).every((el) => el === "");
@@ -50,12 +52,19 @@ function Add() {
         Expenses: billExpenses,
     };
     const sendResult = await postFecth("bills/post", newSkills);
+    setExpiredToken(sendResult)
     console.log('sendResult===', sendResult);
     if (sendResult.error) {
       setisError(true);
     } else {
       history.push(`/bills/${registerid}`);
     }
+  }
+
+  if(expiredToken.error === 'invalid token') {
+    alert('Your login time has expired')
+    localStorage.removeItem('token')
+    history.push('/')
   }
 
   return (
