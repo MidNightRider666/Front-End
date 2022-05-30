@@ -1,0 +1,47 @@
+.form {
+    max-width: 300px;
+    margin: 0 auto;
+    border: 1px solid lightgreen;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+  }
+  
+  .input {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  
+  .err {
+    color: tomato;
+    border: 1px solid tomato;
+    padding: 10px 15px;
+  }
+  
+  .errBg {
+    background-color: rgb(238, 45, 11);
+    border-color: tomato;
+  }
+  .errorText {
+    color: salmon;
+    text-transform: uppercase;
+  }
+  
+  .form:focus-within {
+    box-shadow: 4px 8px 4px 4px lightgreen;
+    color: salmon;
+    border: 1px solid lightblue;
+    background-color: aliceblue;
+    max-width: 500px;
+    height: 300px;
+    transition: 0.5s;
+  }
+  .input:focus {
+    background-color: lightgreen;
+  }
+  

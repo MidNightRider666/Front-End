@@ -1,0 +1,29 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .noToken {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    color: lightgreen;
+    text-transform: capitalize;
+  }
+  .TokenLogo {
+    width: 500px;
+    height: auto;
+    opacity: inherit;
+    justify-content: center;
+  }
+  

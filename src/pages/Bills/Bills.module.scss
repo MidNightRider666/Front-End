@@ -1,0 +1,15 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 20px 0;
+    margin-right: 20px;
+  }
+
+  .flexbutton {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 10px;
+    margin-bottom: 15px;
+  }
