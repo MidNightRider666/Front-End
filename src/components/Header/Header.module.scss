@@ -17,6 +17,7 @@
   padding: 14px 16px;
   text-decoration: none;
   transition: 1s;
+  margin-bottom: 0;
 }
 .navLink:hover {
   background-color: lightgray;
@@ -27,9 +28,11 @@
 }
 
 .button {
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline
+  align-items: baseline;
+  background-color: lightgray;
 }
 
 @media only screen and (max-width: 60rem) {

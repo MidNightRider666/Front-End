@@ -7,20 +7,20 @@ import Container from "../UI/Container";
 import css from "./Header.module.scss";
 
 function Header() {
-  const history = useHistory()
+  const history = useHistory();
   const { isUserLoggedIn, logout } = useContext(AuthContext);
 
   function logoutHandler(e) {
     logout();
     localStorage.removeItem("token");
-    history.push('/')
+    history.push("/");
   }
   return (
-    <header>
+    <Container className={css.header}>
+      <header>
         <div className={css.title}>
           <h1>Technical registration point </h1>
         </div>
-      <Container className={css.header}>
         <nav>
           {!isUserLoggedIn && (
             <NavLink className={css.navLink} to={"/Register"}>
@@ -37,22 +37,22 @@ function Header() {
               Home
             </NavLink>
           )}
-            {isUserLoggedIn && (
+          {isUserLoggedIn && (
             <NavLink className={css.navLink} to={"/registrations"}>
               Registers
             </NavLink>
           )}
         </nav>
-      </Container>
-      {isUserLoggedIn && (
-        <div className={css.button}>
-          <h1 className={css.headContent}>Please choose excecution</h1>
-          <Button logout onClick={logoutHandler}>
-            Logout
-      </Button>
-      </div>
+        {isUserLoggedIn && (
+          <div className={css.button}>
+            <h1 className={css.headContent}>Please choose excecution</h1>
+            <Button logout onClick={logoutHandler}>
+              Logout
+            </Button>
+          </div>
         )}
-    </header>
+      </header>
+    </Container>
   );
 }
 

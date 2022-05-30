@@ -1,47 +1,87 @@
-.form {
-    max-width: 300px;
-    margin: 0 auto;
-    border: 1px solid lightgreen;
-    padding: 20px;
+.all,
+.all:before,
+.all:after {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
     box-sizing: border-box;
-    transition: 0.5s;
-  }
-  
-  .input {
+}
+#main {
+    width: max-content;
+    margin: 40px auto;
+    font-family: "Segoe UI", sans-serif;
+    padding: 30px 80px;
+    background-color: #333;
+    border-radius: 10px;
+    border: 1px solid black;
+    opacity: 0.8;
+    animation: popup 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition: 1s;
+}
+@keyframes popup {
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: black;
+}
+.inputparent{
     display: block;
+    margin-bottom: 20px;
+}
+.inputparent input {
+    padding: 10px 8px;
     width: 100%;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    box-sizing: border-box;
-    margin-bottom: 15px;
+    font-size: 16px;
+    background: silver;
+    border: none;
+    color: black;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+.inputparent input:hover {
+    background: silver;
+}
+.inputparent input:focus {
+    box-shadow: 0px 0px 0px 1px #0087ff;
+}
+
+#main:focus-within {
+  width: max-content;
+  margin: 40px auto;
+  font-family: "Segoe UI", sans-serif;
+  padding: 80px 120px;
+  transition: 1s;
+  opacity: 1;
+  box-shadow: 4px 4px 8px 4px black;
+}
+.error{
+  color: tomato;
+  text-transform: bold;
+}
+
+@media only screen and (max-width: 60rem){
+  #main{
+    width: max-content;
+    margin: 40px auto;
+    padding: 15px 50px;
   }
-  
-  .err {
-    color: tomato;
-    border: 1px solid tomato;
-    padding: 10px 15px;
-  }
-  
-  .errBg {
-    background-color: rgb(238, 45, 11);
-    border-color: tomato;
-  }
-  .errorText {
-    color: salmon;
-    text-transform: uppercase;
-  }
-  
-  .form:focus-within {
-    box-shadow: 4px 8px 4px 4px lightgreen;
-    color: salmon;
-    border: 1px solid lightblue;
-    background-color: aliceblue;
-    max-width: 500px;
-    height: 300px;
-    transition: 0.5s;
-  }
-  .input:focus {
-    background-color: lightgreen;
-  }
-  
+
+  #main:focus-within{
+    width: max-content;
+    margin: 40px auto;
+    padding: 25px 60px;
+    transition: 0.3s;
+}
+}

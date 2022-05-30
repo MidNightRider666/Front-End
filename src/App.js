@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react';
-import { Switch } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import './App.css';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import AddBills from './pages/Add/AddBills';
-import Addregisters from './pages/Add/Addregisters';
-import Archived from './pages/Archived/Archived';
-import Bills from './pages/Bills/Bills';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import Main from './pages/Main/Main';
-import NotFound from './pages/NotFound/NotFound';
-import Register from './pages/Register/Register';
-import AuthContext from './store/AuthContx';
+import { useEffect, useState } from "react";
+import { Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Route } from "react-router-dom";
+import "./App.css";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import AddBills from "./pages/Add/AddBills";
+import Addregisters from "./pages/Add/Addregisters";
+import Archived from "./pages/Archived/Archived";
+import Bills from "./pages/Bills/Bills";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Main from "./pages/Main/Main";
+import NotFound from "./pages/NotFound/NotFound";
+import Register from "./pages/Register/Register";
+import AuthContext from "./store/AuthContx";
 
 function App() {
   // const history= useHistory()
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-    useEffect(() => {
-      if(localStorage.getItem('token') !== null || undefined ) login()
-    },[])
+  useEffect(() => {
+    localStorage.getItem("token") && login();
+  }, []);
 
   function login() {
     setIsUserLoggedIn(true);
@@ -42,25 +42,24 @@ function App() {
   //   history.push('/')
   // }
 
-  console.log('isUserLoggedIn===', isUserLoggedIn);
   return (
     <AuthContext.Provider value={ctxValue}>
-    <div className="App">
-    <Header />
-    <Switch>
-        <Route path={"/"} exact>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route path={"/"} exact>
             <Main />
-    </Route>
-    <Route path={"/registrations"} >
+          </Route>
+          <Route path={"/registrations"}>
             <Home />
-    </Route>
-          <Route path={"/bills/:registerid"} >
+          </Route>
+          <Route path={"/bills/:registerid"}>
             <Bills />
           </Route>
-          <Route path={"/AddBills/:registerid"} >
+          <Route path={"/AddBills/:registerid"}>
             <AddBills />
           </Route>
-          <Route path={"/AddRegisters"} >
+          <Route path={"/AddRegisters"}>
             <Addregisters />
           </Route>
           <Route path={"/Archived"}>
@@ -75,9 +74,9 @@ function App() {
           <Route path={"*"}>
             <NotFound />
           </Route>
-          </Switch>
-          <Footer />
-    </div>
+        </Switch>
+        <Footer />
+      </div>
     </AuthContext.Provider>
   );
 }

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import CardList from '../../components/CardList/CardList';
-import Container from '../../components/UI/Container';
-import Loading from '../../components/UI/Loading';
-import { getFetch } from '../../helper/getFect';
-import css from '../Archived/Archived.module.scss'
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import CardList from "../../components/CardList/CardList";
+import Container from "../../components/UI/Container";
+import Loading from "../../components/UI/Loading";
+import { getFetch } from "../../helper/getFect";
+import css from "../Archived/Archived.module.scss";
 
 function Archived() {
   const history = useHistory();
@@ -16,19 +16,22 @@ function Archived() {
     getSkills();
   }, []);
 
-
   async function getSkills() {
-    setIsLoading(true)
+    setIsLoading(true);
     const skillFromDB = await getFetch("accounts/archived/8");
     setSkillArr(skillFromDB.data);
-    setExpiredToken(skillFromDB)
-    setIsLoading(false)
+    setExpiredToken(skillFromDB);
+    setIsLoading(false);
   }
 
-  if(expiredToken.error === 'invalid token') {
-    alert('Your login time has expired')
-    localStorage.removeItem('token')
-    history.push('/')
+  if (expiredToken.error === "invalid token") {
+    alert("Your login time has expired");
+    localStorage.removeItem("token");
+    history.push("/");
+  }
+  if (localStorage.getItem("token") === null) {
+    alert("you are not allowed to be here");
+    history.push("/");
   }
 
   if (skillArr.length <= 0 && !isLoading) {
@@ -47,16 +50,15 @@ function Archived() {
     );
   }
 
-return (
-  <Container>
-    <div className={css.flex}>
-      <h1>Archived List</h1>
-    </div>
-    <CardList onArchive={getSkills} cardType='Archived' item={skillArr} />
-    <div className={css.flex}>
-    </div>
-  </Container>
-);
+  return (
+    <Container>
+      <div className={css.flex}>
+        <h1>Archived List</h1>
+      </div>
+      <CardList onArchive={getSkills} cardType="Archived" item={skillArr} />
+      <div className={css.flex}></div>
+    </Container>
+  );
 }
 
-export default Archived
+export default Archived;
