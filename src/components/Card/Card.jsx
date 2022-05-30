@@ -18,7 +18,7 @@ function Card(props) {
     }
     if (getCardtype === 'bills') {
       async function handleDelele(){
-        const deleteResult = await archiveFecth('bills/remove' + props.id)
+        const deleteResult = await archiveFecth('bills/remove/' + props.id)
         console.log('deleteResult===', deleteResult);
         if(deleteResult.data.affectedRows === 1) {
           // props.onDelete();
