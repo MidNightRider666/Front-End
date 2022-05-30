@@ -14,7 +14,7 @@ function Card(props) {
   function getCardTypes(getCardtype){
     if(getCardtype === 'registers') {
       return <Link to={`/bills/${props.Id}`}>
-      <Button>View bills</Button>
+      <Button Bills>View bills</Button>
       </Link>
     }
     if (getCardtype === 'bills') {
@@ -37,7 +37,7 @@ function Card(props) {
           props.onArchive();
         }
         }
-        return <Button onClick={handleArchive}>RemoveArchive</Button>
+        return <Button onClick={handleArchive} RemoveArchive>Remove Archive</Button>
       }
   }
 

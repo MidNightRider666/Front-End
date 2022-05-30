@@ -1,8 +1,10 @@
 .card {
-  border: 1px solid lightseagreen;
+  border: 1px solid black;
+  border-radius: 20px;
   padding: 20px;
   text-align: center;
   text-transform: capitalize;
+  transition: 1s;
   .footer {
     display: flex;
     justify-content: center;
@@ -14,8 +16,9 @@
 }
 
 .card:hover {
-  box-shadow: 4px 8px 4px 4px lightgreen;
-  color: salmon;
-  border: 1px solid lightblue;
-  background-color: aliceblue;
+  box-shadow: 4px 8px 4px 4px black;
+  color: white;
+  border: 1px solid 333;
+  background-color: #333;
+  transition: 1s;
 }

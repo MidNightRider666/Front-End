@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import AuthContext from "../../store/AuthContx";
 import Button from "../UI/Button/Button";
 import Container from "../UI/Container";
 import css from "./Header.module.scss";
 
 function Header() {
+  const history = useHistory()
   const { isUserLoggedIn, logout } = useContext(AuthContext);
 
   function logoutHandler(e) {
     logout();
     localStorage.removeItem("token");
+    history.push('/')
   }
   return (
     <header>
@@ -35,7 +38,7 @@ function Header() {
             </NavLink>
           )}
             {isUserLoggedIn && (
-            <NavLink className={css.navLink} to={"registrations"}>
+            <NavLink className={css.navLink} to={"/registrations"}>
               Registers
             </NavLink>
           )}
@@ -43,6 +46,7 @@ function Header() {
       </Container>
       {isUserLoggedIn && (
         <div className={css.button}>
+          <h1 className={css.headContent}>Please choose excecution</h1>
           <Button logout onClick={logoutHandler}>
             Logout
       </Button>

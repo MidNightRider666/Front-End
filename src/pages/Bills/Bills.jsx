@@ -53,7 +53,7 @@ function Bills() {
       setStoreArchives(ArchiveRegisters)
       console.log('ArchiveRegisters===', ArchiveRegisters.data);
       if(ArchiveRegisters.data.changedRows === 1) {
-        history.push('/')
+        history.push('/registrations')
       }
       }
 
@@ -73,9 +73,11 @@ function Bills() {
           </Link>
           </div>
           <CardList onDelete={getBills} cardType='bills' item={billsArc} />
-          <div className={css.flex}>
-          <Button onClick={ArchiveRegisters} dissable={billsArc.length === 0}> Complete</Button>
+          <div className={css.Expenses}>
           <h2>Total expenses:{displayExpenses === 0 ? 'Currently there is 0 expenses' : `$${displayExpenses}`}</h2>
+          </div>
+          <div className={css.flexbutton}>
+          <Button onClick={ArchiveRegisters} dissable={billsArc.length === 0}> Complete</Button>
           </div>
         </Container>
       );
