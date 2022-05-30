@@ -21,7 +21,7 @@ function Card(props) {
         const deleteResult = await archiveFecth('bills/remove' + props.id)
         console.log('deleteResult===', deleteResult);
         if(deleteResult.data.affectedRows === 1) {
-          props.onDelete();
+          // props.onDelete();
         }
       }
       return <Button onClick={handleDelele}>Delete</Button>
