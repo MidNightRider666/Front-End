@@ -38,4 +38,4 @@
 
 11. Most of the data is being transfered from component to component through props. For example button already gets around 10 props just from other components.
 
-12. The React is also stored to digitaloceac from where it is working and env file is getting that URL, but due to the security risk I will not share it here
+12. The React is also stored to digitalocean from where it is working and env file is getting that URL, but due to the security risk I will not share it here
