@@ -40,10 +40,17 @@ function Home() {
   if (skillArr.length <= 0 && !isLoading) {
     return (
       <Container>
+        <div className={css.flex}>
         <h1>Registers are empty, please add some</h1>
         <Link to={"/AddRegisters"}>
           <Button Add>Add registers</Button>
         </Link>
+        </div>
+        <div className={css.flex}>
+          <Link to={"/Archived"}>
+            <Button Archived> View Archived</Button>
+          </Link>
+        </div>
       </Container>
     );
   }
