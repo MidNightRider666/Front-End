@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/UI/Button/Button";
 import Container from "../../components/UI/Container";
@@ -68,6 +69,7 @@ function Login() {
         />
         </div>
         <Button RegLog>Login</Button>
+        <h2>Don't have an account? <Link className={css.NavLink} to={'/register'}>Register</Link> here!</h2>
         <h3 className={css.error}>{noAccount}</h3>
       </form>
     </Container>

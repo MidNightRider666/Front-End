@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Button from "../../components/UI/Button/Button";
 import Container from "../../components/UI/Container";
@@ -76,6 +77,7 @@ function Register() {
           />
         </div>
         <Button RegLog>Register</Button>
+        <h2>Already have an account? <Link className={css.NavLink} to={'/login'}>Login</Link> here!</h2>
         <h3 className={css.error}>{handleErrors}</h3>
       </form>
     </Container>
